@@ -69,6 +69,7 @@ module.exports = {
 //----------- functions----------------//---------------
 
 function goingBar(user,bar, callback){
+  console.log("user: "+user+" bar: "+bar);
   model.bargoingsModel.findOne({user:user, yelps_id:bar}, function(err, data){
     if(err){return callback(err)}
     if(!data){
@@ -77,18 +78,26 @@ function goingBar(user,bar, callback){
         user: user
       }).save(function(err){ 
         if (err){ return callback(err)}
-        else{ 
-          console.log("saved"); 
-          return callback()}
+      });
+      return callback();
+    }
+    else{
+      deleteData(user,bar, function(err){
+        if(err){return callback(err)}
+        else{
+          return callback();
+        }
       });
     }
-    if (data){
-      model.bargoingsModel.remove({user:user, yelps_id:bar});
-      console.log("removed")
-      callback();
-    }
-  })  
+  });
 }
+
+function deleteData(user,bar,callback){
+  model.bargoingsModel.remove({user:user, yelps_id:bar}, function(err){
+    if(err){ return callback(err)}
+  });
+  return callback();
+};  
 
 
 function createUser(userid,username, callback){

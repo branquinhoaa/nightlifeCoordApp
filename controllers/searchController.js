@@ -1,4 +1,5 @@
 var Yelp=require('../yelpAPI.js');
+var model=require('../models/Models.js');
 
 var options ={
   consumer_key: process.env.YELPS_CONSUMERKEY,
@@ -24,17 +25,20 @@ module.exports = {
       if(err){
         res.render('home/error',{error: err});
       } else {
-        var bars = data['businesses']; 
-        res.render('night-events/index', {bars: bars});
+        var bars = data['businesses'];
+        model.bargoingsModel.countUsergoings(function(err, bargoingData){
+          if (err){ res.render('home/error',{error: err});}
+          else {
+            for (var i in bars){
+              var userGoing =bargoingData.find(function(userGoing){
+                return (bars[i]['id']==userGoing['_id']);
+              })
+              bars[i].usersGoing= userGoing ? userGoing.count : 0
+            }
+            res.render('night-events/index', {bars: bars});
+          }
+        })
       }
-    });
+    })
   }
-}
-
-//post metod
-//uso da api do yelp
-/*
-    rememberLastSearch: function(req,res){
-        //nao acredito q precise de bd pra isso, pode ser guardado em locals
-    }
-}*/
+};

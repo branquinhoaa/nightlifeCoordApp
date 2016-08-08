@@ -5,10 +5,11 @@
     <a href={{url}} target="_blank">
       <img src={{image_url}} alt={{id}} >
     </a>
-      <p>{{snippet_text}}</p>   
+    <p>{{snippet_text}}</p>   
     <img src={{rating_img_url_small}}>
     <form action="/user/going/?barId={{id}}" method="POST">
-    <button type="submit" class="btn btn-default going">I'm Going tonight!</button>
+      <span>{{usersGoing}} users are going </span>
+      <button type="submit" class="btn btn-default going"> Going tonight</button>
     </form>
   </div>
   {{/each}}

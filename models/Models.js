@@ -24,17 +24,7 @@ var bargoings = new mongoose.Schema({
   user : String
 });
 
-
-var bargoingsModel = mongoose.model('bargoings', bargoings);
-var userModel = mongoose.model('users', users);
-
-module.exports={
-  bargoingsModel : bargoingsModel,
-  userModel: userModel
-};
-
-/*
-bargoing.statics.countUsergoings = function (barId, callback){
+bargoings.statics.countUsergoings = function (callback){
   return this.aggregate([
     {$group: { _id : '$yelps_id', count : {$sum : 1}}}], 
                         function(err, data){
@@ -43,4 +33,12 @@ bargoing.statics.countUsergoings = function (barId, callback){
       callback(null,data);
     }
   });
-};*/
+};
+
+var bargoingsModel = mongoose.model('bargoings', bargoings);
+var userModel = mongoose.model('users', users);
+
+module.exports={
+  bargoingsModel : bargoingsModel,
+  userModel: userModel
+};
