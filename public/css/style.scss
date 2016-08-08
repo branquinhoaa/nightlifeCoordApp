@@ -1,0 +1,76 @@
+$font-art: 'Patrick Hand', cursive;
+$font-base: 'Crimson Text', serif;
+$primary-color: #F4EBDB;
+$darker-color:#282222;
+$font-color:#1C243F;
+
+body{
+    font-family: $font-base;    
+    background-color: $darker-color;
+}
+
+#barList{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    div{
+        background-color: $darker-color;
+        border: none;
+        border-bottom: 2px solid $primary-color;
+
+    }
+    color: $primary-color;
+    h1{
+        text-align: center;
+    }
+    p{
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+}
+/*
+button.btn.btn-default.going{
+    background-color: $primary-color;
+    display: block;
+    margin-left: 80%;
+}*/
+
+#header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color:$font-color; 
+    background-color: $primary-color;
+    p{
+        text-align: justify;
+    }
+}
+
+#events{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    form{
+        width: 50%;
+        text-align: center;
+        h3{
+            color:$primary-color;
+            margin-bottom: 20px;
+        }
+        button{
+            margin: 20px;
+            &:hover{
+                background-color: $darker-color;
+                color: #F4EBDB;
+                transition: all 0.5s;
+            }
+        }        
+    }
+}

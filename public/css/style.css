@@ -1,0 +1,59 @@
+body {
+  font-family: "Crimson Text", serif;
+  background-color: #282222; }
+
+#barList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #F4EBDB; }
+  #barList div {
+    background-color: #282222;
+    border: none;
+    border-bottom: 2px solid #F4EBDB; }
+  #barList h1 {
+    text-align: center; }
+  #barList p {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center; }
+
+/*
+button.btn.btn-default.going{
+    background-color: $primary-color;
+    display: block;
+    margin-left: 80%;
+}*/
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: #1C243F;
+  background-color: #F4EBDB; }
+  #header p {
+    text-align: justify; }
+
+#events {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center; }
+  #events form {
+    width: 50%;
+    text-align: center; }
+    #events form h3 {
+      color: #F4EBDB;
+      margin-bottom: 20px; }
+    #events form button {
+      margin: 20px; }
+      #events form button:hover {
+        background-color: #282222;
+        color: #F4EBDB;
+        transition: all 0.5s; }
+
+/*# sourceMappingURL=style.css.map */
