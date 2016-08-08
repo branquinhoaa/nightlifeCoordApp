@@ -1,27 +1,46 @@
 var mongoose=require('mongoose');
-var url = process.env.URL_MLAB;
+var url = process.env.MONGOLAB_URI;
 var db = mongoose.connection;
-var Schema = mongoose.Schema;
+mongoose.connect(url);
 
 db.on('error', function(){
-    console.log('There was an error connecting to the database');
+  console.log('There was an error connecting to the database');
 });
 
 db.once('open', function() {
-    console.log('Successfully connected to database');
+  console.log('Successfully connected to database');
 });
-
-// Database
-mongoose.connect(url);
-
 
 // User Model
 
-var userSchema = new Schema({
-    //identificar quando o user ta logado com a rede social e quando nao está para rotear ele pro login ou computar a presença
-})
+var users = new mongoose.Schema({
+  twitter_id: String,
+  userName: String
+});
 
-// Event Model
-var eventSchema = new Schema({
-    //retorna os locais dos eventos retornados pela api -  nao precisa de bd
-})
+// bargoing Model
+var bargoings = new mongoose.Schema({
+  yelps_id : String,
+  user : String
+});
+
+
+var bargoingsModel = mongoose.model('bargoings', bargoings);
+var userModel = mongoose.model('users', users);
+
+module.exports={
+  bargoingsModel : bargoingsModel,
+  userModel: userModel
+};
+
+/*
+bargoing.statics.countUsergoings = function (barId, callback){
+  return this.aggregate([
+    {$group: { _id : '$yelps_id', count : {$sum : 1}}}], 
+                        function(err, data){
+    if (err){ callback(err)}
+    else{
+      callback(null,data);
+    }
+  });
+};*/

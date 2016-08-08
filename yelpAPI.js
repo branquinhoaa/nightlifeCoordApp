@@ -20,7 +20,7 @@ var Yelp = function(opts) {
     );
   }
 
-  Yelp.prototype.get = function (resource, params = {}, cb) {
+  Yelp.prototype.get = function (resource, params, cb) {
     const promise = new Promise((resolve, reject) => {
       const debug = params.debug;
       delete params.debug;

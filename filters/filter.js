@@ -1,5 +1,3 @@
-var dbConnection = require("../dbConn.js");
-
 module.exports = {
     verifyCurrentUser:function(req, res, next){
         console.log("verifyCurrentUser", req.session);
