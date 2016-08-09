@@ -7,7 +7,7 @@ var model = require('../models/Models.js');
 module.exports = {
   login: function(req, res){
     var last_search = req.session.last_search;
-    var fullUrl = 'http://127.0.0.1:3000/user/logged-redirect/?last_search='+last_search;
+    var fullUrl = 'https://agile-badlands-34442.herokuapp.com/user/logged-redirect/?last_search='+last_search;
     twitter = new Twitter({
       consumerKey: process.env.twitter_apikey,
       consumerSecret: process.env.twitter_apisecret,
