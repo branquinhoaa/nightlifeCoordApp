@@ -2,12 +2,14 @@ var Twitter = require('node-twitter-api');
 var twitter;
 var _requestSecret;
 var model = require('../models/Models.js');
+var config = require('../config.js');
 
 
 module.exports = {
   login: function(req, res){
+    debugger;
     var last_search = req.session.last_search;
-    var fullUrl = 'https://agile-badlands-34442.herokuapp.com/user/logged-redirect/?last_search='+last_search;
+    var fullUrl =config[config.environment]['twitterCallback']+last_search;
     twitter = new Twitter({
       consumerKey: process.env.twitter_apikey,
       consumerSecret: process.env.twitter_apisecret,

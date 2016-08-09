@@ -17,7 +17,6 @@ module.exports = {
   },
 
   last_search: function(req,res){
-    debugger;
     var location = req.session.last_search;
     yelp.search({
       term: 'bars',
