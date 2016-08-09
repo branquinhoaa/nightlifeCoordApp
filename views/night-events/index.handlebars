@@ -9,7 +9,11 @@
     <img src={{rating_img_url_small}}>
     <form action="/user/going/?barId={{id}}" method="POST">
       <span>{{usersGoing}} users are going </span>
-      <button type="submit" class="btn btn-default going"> Going tonight</button>
+      {{#if imGoing}}
+      <button type="submit" class="btn btn-default going"> Not going anymore!</button>
+      {{else}}
+      <button type="submit" class="btn btn-default going"> Going tonight!</button>
+      {{/if}}
     </form>
   </div>
   {{/each}}

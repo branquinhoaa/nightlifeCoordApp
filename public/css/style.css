@@ -9,6 +9,10 @@ body {
   align-items: center;
   flex-direction: column;
   color: #F4EBDB; }
+  #barList span {
+    margin-right: 30px;
+    margin-left: 20px;
+    font-size: 16px; }
   #barList div {
     background-color: #282222;
     border: none;
@@ -19,12 +23,14 @@ body {
     font-size: 20px;
     padding: 10px;
     text-align: center; }
+  #barList button {
+    margin-bottom: 5px; }
 
 /*
 button.btn.btn-default.going{
-    background-color: $primary-color;
-    display: block;
-    margin-left: 80%;
+background-color: $primary-color;
+display: block;
+margin-left: 80%;
 }*/
 #header {
   display: flex;

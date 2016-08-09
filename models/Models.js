@@ -35,6 +35,14 @@ bargoings.statics.countUsergoings = function (callback){
   });
 };
 
+bargoings.statics.countImGoing = function(myId, callback){
+  return this.find({'user':myId}, function(err, data){
+    if(err) {callback(err)}
+    if(!data){callback(null)}
+    if(data){ callback(null,data)}
+  });
+}
+
 var bargoingsModel = mongoose.model('bargoings', bargoings);
 var userModel = mongoose.model('users', users);
 

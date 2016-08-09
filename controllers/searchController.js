@@ -17,28 +17,47 @@ module.exports = {
   },
 
   last_search: function(req,res){
+    debugger;
     var location = req.session.last_search;
     yelp.search({
       term: 'bars',
-      location: location,
+      location: location
     }, function(err,data){
       if(err){
         res.render('home/error',{error: err});
-      } else {
-        var bars = data['businesses'];
-        model.bargoingsModel.countUsergoings(function(err, bargoingData){
+      } 
+      var myId=req.session.userId; 
+      var bars = data['businesses'];
+      model.bargoingsModel.countUsergoings(function(err, bargoingData){
+        find(myId, function(err, barsImGoing){
           if (err){ res.render('home/error',{error: err});}
           else {
             for (var i in bars){
               var userGoing =bargoingData.find(function(userGoing){
                 return (bars[i]['id']==userGoing['_id']);
-              })
-              bars[i].usersGoing= userGoing ? userGoing.count : 0
+              });
+              bars[i].usersGoing= userGoing ? userGoing.count : 0;
+              bars[i].imGoing = (barsImGoing.indexOf(bars[i].id)!==-1);
             }
-            res.render('night-events/index', {bars: bars});
+            res.render('night-events/index', {bars: bars});     
           }
-        })
-      }
+        })     
+      })   
     })
   }
-};
+}
+
+
+function find (myId, callback){
+  var barsImGoing=[]; 
+  model.bargoingsModel.find({user:myId}, function(err, myBars){ 
+    if (err){return callback(err)}
+    if(myBars){ 
+      for(var i in myBars){
+        barsImGoing[i]=myBars[i].yelps_id;
+      }
+    }
+    return callback(null, barsImGoing)
+  })  
+} 
+
