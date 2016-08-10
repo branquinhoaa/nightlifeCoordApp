@@ -8,6 +8,6 @@ config.production = {
   twitterCallback:'https://agile-badlands-34442.herokuapp.com/user/logged-redirect/?last_search='
 };
 
-config.environment = 'development';
+config.environment = 'production';
 module.exports=config;
 
