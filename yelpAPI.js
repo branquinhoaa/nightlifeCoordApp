@@ -1,5 +1,3 @@
-//import querystring from 'querystring';
-//import oauth from 'oauth';
 var querystring = require('querystring');
 var oAuth = require('oauth');
 var OAuth = oAuth.OAuth;
@@ -54,13 +52,7 @@ var Yelp = function(opts) {
     return this.get('business/' + id, undefined, callback);
   }
 
-  /**
-   * Exampe:
-   * yelp.phone_search({phone: "+12223334444"}, function(error, data) {});
-   */
   Yelp.prototype.phoneSearch=function(params, callback) {
     return this.get('phone_search', params, callback);
   }
-
-
 module.exports=Yelp;

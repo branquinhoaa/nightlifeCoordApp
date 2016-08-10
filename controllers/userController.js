@@ -61,16 +61,14 @@ module.exports = {
       goingBar(req.session.userId, barId, function(err,going){
         if(err){render('home/error',{error:err})}
         else{
-          console.log("going: "+going);
           req.session.imGoing=going;
           res.redirect('/events/lastSearch');
         } 
       });
     }
   }
-};
+}
 
-//----------- functions----------------//---------------
 
 function goingBar(user,bar, callback){
   model.bargoingsModel.findOne({user:user, yelps_id:bar}, function(err, data){
